@@ -1,0 +1,10 @@
+git init - initialize the to git 
+git remote add origin link of repositry
+git remote -v
+git add .
+git commit -m "first commit"
+git push origin master
+
+
+git tokken
+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

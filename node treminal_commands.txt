@@ -1,0 +1,61 @@
+for making basic node project following commands are used
+npm init --yes
+npm i mysql // for mysql
+npm i express 
+
+
+
+
+npm i -g nodemon // changes will updated just saving the file
+nodemon <app name>
+Step 1 : Go to this location --> File C:\Users\Dell\AppData\Roaming\npm
+Step 2 : Delete the nodemon.ps1 file and run the command
+
+
+
+
+rest api 
+
+get /user         list of all users 
+get /user/:id     get user by id 
+post /user        create a new user
+put /user/:id     update user by id 
+delete /user/:id  delete by id   
+
+
+database mysql connection /// mention any where
+const dbConn = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'node_mysql_crud_db'
+});
+
+simple get request //////
+app.get('/user', (req, res) => {
+    console.log("Fetching user with id: " + req.params.id)
+    const userId = req.params.id
+    const queryString = "SELECT * FROM employees"
+    dbConn.query(queryString, [userId], (err, rows, fields) => {
+      if (err) {
+        console.log("Failed to query for users: " + err)
+        res.sendStatus(500)
+        return
+        // throw err
+      }
+  
+      console.log("I think we fetched users successfully")
+  
+      const users = rows.map((row) => {
+        return {firstName: row.first_name, lastName: row.last_name , email:row.email , 
+            phone:row.phone , organizations:row.organizations, designation:row.designation,
+            statu:row.statu} 
+      })
+  
+      res.json(users)
+    })
+  
+    // res.end()
+  })
+
+

@@ -1,0 +1,51 @@
+cmd mysql acces 
+
+path of bin C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+then write this command 
+
+mysql -u root -p
+password = password
+
+
+CREATE DATABASE TEST; // create database
+USE TEST; // use 
+CREATE TABLE STOCKS(TRADEDATE CHAR(10),  // create column
+					SPY  double ,
+                    DLD double,
+                    GOOGLE double,
+                    KPTI double,
+                    GILD double,
+                    MPC double);
+select * FROM STOCKS; // select all
+INSERT INTO STOCKS VALUES();    // insert values 
+update stocks set TRADEDATE = str_to_date(TRADEDATE, "%m/%d/%Y");  
+UPDATE stocks SET TRADEDATE = DATE(TRADEDATE(TRADEDATE, '%m/%d/%Y'))
+WHERE DATE(STR_TO_DATE(TRADEDATE, '%m/%d/%Y')) <> '0000-00-00';
+              
+SET SQL_SAFE_UPDATES = 0;      
+SHOW COLUMNS
+FROM test.stocks ;             
+DELETE FROM stocks WHERE STOCKS IS NULL;
+delete *from stocks where column='NULL';
+DELETE FROM stocks WHERE some_column = '';
+DELETE FROM stocks WHERE SPY = null
+
+for connection with mysql
+
+const mysql = require('mysql')
+
+
+const dbConn = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'node_mysql_crud_db'
+});
+dbConn.connect(function(error){
+    if(error) throw error;
+    console.log('Database Connected Successfully!!!');
+})
+module.exports = dbConn  
+
+
