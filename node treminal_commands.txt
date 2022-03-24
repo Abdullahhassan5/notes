@@ -3,12 +3,13 @@ npm init --yes
 npm i mysql // for mysql
 npm i express 
 
+for html install this package =npm i body-parser
 
 
 
 npm i -g nodemon // changes will updated just saving the file
 nodemon <app name>
-Step 1 : Go to this location --> File C:\Users\Dell\AppData\Roaming\npm
+Step 1 : Go to this location --> File C:\Users\zaroon\AppData\Roaming\npm
 Step 2 : Delete the nodemon.ps1 file and run the command
 
 

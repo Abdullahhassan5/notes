@@ -7,6 +7,9 @@ then write this command
 mysql -u root -p
 password = password
 
+docker run -it --rm mysql mysql -hlocalhost -uroot -p
+docker run -d --name=mysql-server -p 3306:3306 -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password mysql
+
 
 CREATE DATABASE TEST; // create database
 USE TEST; // use 

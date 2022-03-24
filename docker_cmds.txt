@@ -1,0 +1,26 @@
+#  into our application first we need to add docker file with name Dockerfile
+
+following instruction are use to docker the file 
+
+FROM node:alpine3.10 // used to set minimum isze of the file 
+COPY . /app  // copy all the files  /app is the directory
+WORKDIR /app  
+CMD node app.js // cmd to executee the file
+
+then go to cmd 
+creating image of our application
+give path of your application in cmd
+docker build -t <folder-name> . // . is used add all files
+
+cmd to push on docker hub 
+push docker image to respository on docker hub
+docker tag local-image:tagname new-repo:tagname // new-repo:tagname = abdullahhassan/its tag // local-image:image in 
+docker push new-repo:tagname 
+
+download from dockerhub 
+docker pull abdullahhassan/tag
+
+
+
+
+

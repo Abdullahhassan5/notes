@@ -8,3 +8,9 @@ git push origin master
 
 git tokken
 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
+
+
+update git repository work 
+// IF WE ADD  ADDING ANY NEW FOLDER USE THIS = git add <newfolder name>
+// then coommit it using this command = git commit -m "any comment"
+// then push origin master
