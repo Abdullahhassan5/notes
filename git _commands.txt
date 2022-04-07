@@ -1,10 +1,44 @@
-git init - initialize the to git 
-git remote add origin link of repositry
-git remote -v
-git add .
-git commit -m "first commit"
-git push origin master
+1.git init - //initialize the to git 
+2.git remote add origin <link of repositry>
+3.git remote -v
+4.git add . // add all the changes of files 
+5.<can add one folde or file like add folder name>
+6.git commit -m "first commit"
+7.git push origin master
 
+8.git log --oneline // check the log of commits
+
+9.to reverse the commit or to remove the any older commit use this cmd
+ 
+first check the commit log using 
+git log --oneline
+then use this 
+
+git checkout <reference of older commit> <name of main file> e.g
+
+git checkout 17692a4 index.html
+
+
+10.To remove the last commit from git, you can simply run 
+
+git reset --hard HEAD^ 
+
+If you are removing multiple commits from the top, you can run git reset 
+
+--hard HEAD~2 
+
+to remove the last two commits. 
+
+You can increase the number to remove even more commits.
+
+11. how to clone repository into your local computer 
+
+12. undo git add . // use this cmd
+git reset HEAD 
+
+mkdir // make new folder
+give path to store the repository
+git clone url of the of the repository
 
 git tokken
 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
@@ -14,3 +48,12 @@ update git repository work
 // IF WE ADD  ADDING ANY NEW FOLDER USE THIS = git add <newfolder name>
 // then coommit it using this command = git commit -m "any comment"
 // then push origin master
+
+i change the default main to master
+If you have a local clone, you can update it by running the following commands.
+
+git branch -m main master
+git fetch origin
+git branch -u origin/master master
+git remote set-head origin -a
+

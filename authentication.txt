@@ -1,0 +1,50 @@
+1. basic authentiction method 
+
+step one  define function name auth , wich contain three parameters req , res , next
+
+ function auth (req , res , next){ // wich contain three parameters req ,res 
+
+  console.log(req.headers);
+
+  var authHeader = req.headers.authorization; // send challenge to user 
+  if (!authHeader) {    // wrong password handle etc
+    var err = new Error('You are not authenticated!');
+    res.setHeader('WWW-Authenticate', 'Basic');
+    err.status = 401;
+    next(err);
+    return;
+} 
+step 2 confirm user name and password
+//  split username and password from the string
+var auth = new Buffer.from(authHeader.split(' ')[1], 'base64').toString().split(':');
+  var user = auth[0];
+  var pass = auth[1];
+  if (user == 'admin' && pass == 'password') {
+      next(); // authorized
+  } else {
+      var err = new Error('You are not authenticated!');
+      res.setHeader('WWW-Authenticate', 'Basic');      
+      err.status = 401;
+      next(err);
+  }
+
+}
+
+app.use(auth);
+  
+}
+
+3.for cookie and seesion 
+code explaination
+1.npm install cookie-parser@1.4.3 --save // for cookie package istaller
+normally express generator add it automatically
+cookie is small memory used to store infomation at client side
+
+
+2.app.use(cookieParser('12345-67890-09876-54321')); // number represent secret key that is signed by server
+
+
+
+ 
+
+

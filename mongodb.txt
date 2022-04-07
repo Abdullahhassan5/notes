@@ -1,0 +1,152 @@
+1.create database
+use <database name>
+2.for document creation 
+db.dishes.insert({name:"abdullah", description: "hassan"});// replace dishes to create and insert in collection
+3.db.dishes.find(); // find document in the database
+4.show collections // show collection in db
+5.db.COLLECTION_NAME.drop()// drop collection
+6. mongodb config url that connect us to mongodb
+const url = 'mongodb://localhost:27017/';
+const dbname = 'conFusion'; // db name
+7.check the schema 
+db.collectionName.find().pretty() 
+
+9.package needs to be insatll for defining schema and models
+npm install mongodb@3.0.10 --save //node module install mongodb
+npm install assert@1.4.1 --save  // asser used to send back errors
+npm install mongoose@5.1.7 mongoose-currency@0.2.0 --save // use to define schema 
+
+9.how to check mongodb service is running or not in windows
+let me describe you in a clear way when you type mongod in cmd it will start your mongod server it means your database service is started
+
+now for connecting to mongo you should open new cmd and type mongo it will behave as a client.now you can query in mongo like this
+show collections
+show dbs
+
+
+
+9.const MongoClient = require('mongodb').MongoClient; //import mongo client
+const assert = require('assert'); // for error
+
+const url = 'mongodb://localhost:27017/'; // localhost mongodb url definition
+const dbname = 'conFusion'; // db name   
+MongoClient.connect(url, (err, client) => {
+
+    assert.equal(err,null);
+
+    console.log('Connected correctly to server');
+
+    const db = client.db(dbname); 
+    const collection = db.collection("dishes"); //define collection name
+    collection.insertOne({"name": "Uthappizza", "description": "test"},
+    (err, result) => {
+        assert.equal(err,null);
+
+        console.log("After Insert:\n");
+        console.log(result.ops);
+
+        collection.find({}).toArray((err, docs) => {
+            assert.equal(err,null);
+            
+            console.log("Found:\n");
+            console.log(docs);
+
+            db.dropCollection("dishes", (err, result) => {
+                assert.equal(err,null);
+
+                client.close();
+            });
+        });
+    });
+
+});
+
+
+
+MongoClient.connect(url, (err, client) => {
+
+    assert.equal(err,null);
+    const db = client.db(dbname);
+    const collection = db.collection("dishes");
+    collection.insertOne({"name": "Uthappizza", "description": "test"},
+    (err, result) => {
+        assert.equal(err,null);
+
+        console.log("After Insert:\n");
+        console.log(result.ops);
+
+        collection.find({}).toArray((err, docs) => {
+            assert.equal(err,null);
+            
+            console.log("Found:\n");
+            console.log(docs);
+
+            db.dropCollection("dishes", (err, result) => {
+                assert.equal(err,null);
+
+                client.close();
+            });
+        });
+    });
+
+});
+
+
+6.mongodb basic operations which are insert , update , delete , find
+
+exports.insertDocument = (db, document, collection, callback) => {
+    const coll = db.collection(collection);
+    coll.insert(document, (err, result) => {
+        assert.equal(err, null);
+        console.log("Inserted " + result.result.n +
+            " documents into the collection " + collection);
+        callback(result);
+    });
+};
+
+
+7. we can create by itself schema of mongodb using the seperate file called model
+
+first install this model using =  npm install mongoose@5.1.7 --save
+
+const mongoose = require('mongoose'); // import package
+const Schema = mongoose.Schema; // object of mongose schema
+
+const dishSchema = new Schema({  
+    name: {                         // define the data type etc of our data here
+        type: String,
+        required: true,
+        unique: true
+    },
+    description: {                // same here
+        type: String,
+        required: true
+    }
+},{
+    timestamps: true            // used to tell us when the data is update or added etc
+});
+
+var Dishes = mongoose.model('Dish', dishSchema);  // to export module for index.js
+
+module.exports = Dishes;
+
+
+
+// rest api with mongodb 
+
+1. in app .js we estblish the connection with database by requireing the followin node modules 
+const mongoose =require('mongoose');
+const dishes = require('./models/dishes')
+
+const url = 'mongodb://localhost:27017/conFusion'; 
+
+const connect = mongoose.connect(url);
+
+connect.then((db)=>{
+  console.log("connected seucessfully");
+},(err)=>{console.log(err);});
+
+
+
+
+

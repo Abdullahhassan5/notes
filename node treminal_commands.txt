@@ -1,21 +1,36 @@
 for making basic node project following commands are used
-npm init --yes
-npm i mysql // for mysql
-npm i express 
+1.npm init --yes
+2.npm i mysql // for mysql
+3.npm i express 
 
-for html install this package =npm i body-parser
+4.add this in package.js if there is problem with "npm start"
+ "start":"node index"
+
+5.for html install this package =npm i body-parser
+
+6.what is express generator 
+
+it bassically generate the structure of the express  application
+first need to install the this package in cmd run as administration
+npm install express-generator@4.16.0 -g
+then to generate the application select the path where you want to gereate the app then 
+express <app-name>
+then add npm install
 
 
-
-npm i -g nodemon // changes will updated just saving the file
+7.npm i -g nodemon // changes will updated just saving the file
 nodemon <app name>
+first way use this for nodemon 
+powershell -ExecutionPolicy Bypass -File C:\Users\zaroon\AppData\Roaming\npm\nodemon.ps1
+
+second way
 Step 1 : Go to this location --> File C:\Users\zaroon\AppData\Roaming\npm
 Step 2 : Delete the nodemon.ps1 file and run the command
 
 
 
 
-rest api 
+9.rest api 
 
 get /user         list of all users 
 get /user/:id     get user by id 
@@ -24,7 +39,7 @@ put /user/:id     update user by id
 delete /user/:id  delete by id   
 
 
-database mysql connection /// mention any where
+10.database mysql connection /// mention any where
 const dbConn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -32,7 +47,7 @@ const dbConn = mysql.createConnection({
     database: 'node_mysql_crud_db'
 });
 
-simple get request //////
+11.simple get request //////
 app.get('/user', (req, res) => {
     console.log("Fetching user with id: " + req.params.id)
     const userId = req.params.id
@@ -60,3 +75,35 @@ app.get('/user', (req, res) => {
   })
 
 
+12.types of function
+• First-class	functions:	
+A function can	be treated the same way	as any	other variable
+• Closures:
+– A function defined inside another function has access	to all	the	variables declared in the outer	function (outer	scope)
+– The inner function will continue to	have	access	to	the	
+variables from the outer scope	even	after	the	outer	
+function has returned
+
+
+13.chrome open new tab shortcut
+
+Open a new tab, and jump to it = Ctrl + t
+Jump to the next open tab =Ctrl + Tab 
+Jump to the previous open tab =Ctrl + Shift + Tab
+
+
+14.morgan is used to log massage on console when we move from one directory to another
+npm install morgan@1.9.0 --save
+
+mongo db path for 
+path dir =C:\Program Files\MongoDB\Server\5.0\data\ 
+
+log dir = C:\Program Files\MongoDB\Server\5.0\log\
+
+
+15.  for cookie and session 
+need to install cookie parser
+
+
+
+ 
