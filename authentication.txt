@@ -1,4 +1,4 @@
-1. basic authentiction method 
+# 1. basic authentiction method 
 
 step one  define function name auth , wich contain three parameters req , res , next
 
