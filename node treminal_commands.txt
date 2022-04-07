@@ -3,6 +3,7 @@ for making basic node project following commands are used
 2.npm i mysql // for mysql
 3.npm i express 
 
+
 4.add this in package.js if there is problem with "npm start"
  "start":"node index"
 
