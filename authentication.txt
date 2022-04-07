@@ -42,6 +42,28 @@ cookie is small memory used to store infomation at client side
 
 
 2.app.use(cookieParser('12345-67890-09876-54321')); // number represent secret key that is signed by server
+when we add the number in cookie parser it will be consider as signed cookie
+
+function for basic authentication
+3.function auth (req, res, next) {
+
+}
+which include if the client dont have the signed cookie then
+
+4.if (!req.signedCookies.user) { // 
+
+}
+ then user needs to be authenticate it self 
+5. var authHeader = req.headers.authorization; // user need to be enter username and password
+
+6.// if user did not enter the valid user name and password it will handle the error
+if (!authHeader) {
+        var err = new Error('You are not authenticated!');
+        res.setHeader('WWW-Authenticate', 'Basic');              
+        err.status = 401;
+        next(err);
+        return;
+    }
 
 
 
